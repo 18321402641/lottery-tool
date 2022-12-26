@@ -22,6 +22,11 @@ define(function(require, exports, module) {
 
   var RIGIDITY = 4 // 弹性系数：2 -钢球 4 - 橡胶球，越大越软，建议小于 10
 
+  //默认是三等奖
+  var TYPE = '#lucky-balls-third'
+  //默认状态是3，点击下一轮则递减
+  var TYPE_STATUS = 3
+
 
   function User(id,name,company, options) {
     this.id = id
@@ -184,6 +189,8 @@ define(function(require, exports, module) {
       // bind button
       var trigger = document.querySelector('#go');
       var tag = document.querySelector("#handle");
+      var next = document.querySelector("#next")
+      next.innerHTML = next.getAttribute('data-text')
       trigger.innerHTML = trigger.getAttribute('data-text-start')
       tag.innerHTML = tag.getAttribute('data-text-start')
       trigger.addEventListener('click', go, false)
@@ -318,6 +325,24 @@ define(function(require, exports, module) {
         $('#lucky-balls li').eq(0).click()
         $("#reference").hide()
       })
+
+      // 下一轮点击事件
+      $('#next').on('click',function (){
+        switch (TYPE_STATUS){
+          case 3:
+            TYPE_STATUS-=1;
+            TYPE='#lucky-balls-second';
+            alert("现在抽取二等奖")
+            break;
+          case 2:
+            TYPE_STATUS-=1;
+            TYPE='#lucky-balls-first';
+            alert("现在抽取一等奖")
+            break;
+          case 1:
+            alert("已经是最后一轮")
+        }
+      })
     },
 
     start: function() {
@@ -393,7 +418,7 @@ define(function(require, exports, module) {
       if (luckyUser) {
         luckyUser.el[0].style.cssText = ''
         //luckyUser.el.prependTo('#lucky-balls') // 被选元素的开头（仍位于内部）插入指定内容
-        luckyUser.el.appendTo('#lucky-balls') // 被选元素的结尾（仍位于内部）插入指定内容
+        luckyUser.el.appendTo(TYPE) // 被选元素的结尾（仍位于内部）插入指定内容
         this.removeItem(luckyUser)
         this.luckyUser = null
         this.setHasLuckyData(luckyUser)
