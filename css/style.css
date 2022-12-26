@@ -3,6 +3,25 @@ body {
   /*background: #eee;*/
 }
 
+#lucky-balls-first li,
+#lucky-balls-second li,
+#lucky-balls-third li{
+  float: left;
+  padding: 0;
+  margin: 4px;
+  width: 60px !important;
+  height: 60px !important;
+  overflow: hidden;
+  font-size: 12px;
+  background: #e21536;
+  color: #fff;
+  opacity: .9;/*球体透明度*/
+  text-align: center;
+  border-radius: 30px;
+  word-break: keep-all;
+  cursor: pointer;
+}
+
 ul li {
   list-style: none;
 }
@@ -39,6 +58,7 @@ ul li {
   word-break: keep-all;
   cursor: pointer;
 }
+
 #balls li .company,
 #lucky-balls li .company{
   font-size:12px;
@@ -139,6 +159,7 @@ nav a {
   color:#e21536;
   font-weight: bold;
   font-size:30px;
+  line-height: 100px;
 }
 .lottery-btn{
   width: 100px;
