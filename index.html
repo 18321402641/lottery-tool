@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-    123
     <title>酒会抽奖系统</title>
     <meta charset="utf-8">
     <link href="css/style.css?v=0.4" rel="stylesheet">
@@ -38,7 +37,7 @@
             </div>
         </li>
         <li>
-            <div class="handle" id="next" data-text="下一轮">
+            <div class="handle" id="next" data-text="设置奖项" style="font-size: 12px">
             </div>
         </li>
         <li>
@@ -53,20 +52,54 @@
         <ul id="balls">
             <div class="reference" id="reference"></div>
         </ul>
-        <!--中奖list-->
-        <div style="display: flex;position: relative;height: 100px;text-align: center">
-            <span class="lottery-title">一等奖:</span>
-            <ul class="lucky-balls" id="lucky-balls-first"></ul>
-        </div>
-        <div style="display: flex;position: relative;height: 100px;text-align: center">
-            <span class="lottery-title">二等奖:</span>
-            <ul id="lucky-balls-second"></ul>
-        </div>
-        <div style="display: flex;position: relative;height: 100px;text-align: center">
-            <span class="lottery-title">三等奖:</span>
-            <ul id="lucky-balls-third"></ul>
-        </div>
     </div>
+    <!--中奖list-->
+    <div class="lucky-list-div">
+        <li style="list-style: none">
+            <span class="lottery-title" id="jiangxiang" style="width: 200px"></span>
+            <div class="lucky-list" style="display: flex">
+
+                <ul class="lucky-balls" id="lucky-balls-first"></ul>
+            </div>
+        </li>
+<!--        <li style="list-style: none">
+            <div class="lucky-list">
+                <span class="lottery-title">一等奖:</span>
+                <ul class="lucky-balls" id="lucky-balls-first"></ul>
+            </div>
+        </li>
+        <li style="list-style: none">
+            <div class="lucky-list">
+                <span class="lottery-title">二等奖:</span>
+                <ul class="lucky-balls" id="lucky-balls-second"></ul>
+            </div>
+        </li>
+        <li style="list-style: none">
+            <div class="lucky-list">
+                <span class="lottery-title">三等奖:</span>
+                <ul id="lucky-balls-third"></ul>
+            </div>
+        </li>
+        <li style="list-style: none">
+            <div class="lucky-list">
+                <span class="lottery-title">四等奖:</span>
+                <ul class="lucky-balls" id="lucky-balls-fourth"></ul>
+            </div>
+        </li>
+        <li style="list-style: none">
+            <div class="lucky-list">
+                <span class="lottery-title">五等奖:</span>
+                <ul id="lucky-balls-fifth"></ul>
+            </div>
+        </li>
+        <li style="list-style: none">
+            <div class="lucky-list">
+                <span class="lottery-title">六等奖:</span>
+                <ul class="lucky-balls" id="lucky-balls-sixth"></ul>
+            </div>
+        </li>-->
+    </div>
+
 
     <!--抽奖按钮
     <div class="lottery-btn">抽奖</div>-->

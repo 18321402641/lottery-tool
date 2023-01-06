@@ -22,10 +22,10 @@ define(function(require, exports, module) {
 
   var RIGIDITY = 4 // 弹性系数：2 -钢球 4 - 橡胶球，越大越软，建议小于 10
 
-  //默认是三等奖
-  var TYPE = '#lucky-balls-third'
+  //默认是一等奖的框
+  var TYPE = '#lucky-balls-first'
   //默认状态是3，点击下一轮则递减
-  var TYPE_STATUS = 3
+  var TYPE_STATUS = 1
 
 
   function User(id,name,company, options) {
@@ -51,7 +51,7 @@ define(function(require, exports, module) {
   }
 
   User.prototype.createEl = function() {
-    this.el = $('<li data-id='+ this.id +'><p class="company">' + this.company + '</p><p class="name">' + this.name + '</p></li>').appendTo('#balls')
+    this.el = $('<li data-id='+ this.id +'><p class="company">'+this.id +'</p></li>').appendTo('#balls')
     this.width = this.el.width()
     this.height = this.el.height()
     var colorList = ["#B5FF91","#94DBFF",
@@ -190,6 +190,7 @@ define(function(require, exports, module) {
       var trigger = document.querySelector('#go');
       var tag = document.querySelector("#handle");
       var next = document.querySelector("#next")
+/*      var jiangxiang = document.getElementById("#jiangxiang")*/
       next.innerHTML = next.getAttribute('data-text')
       trigger.innerHTML = trigger.getAttribute('data-text-start')
       tag.innerHTML = tag.getAttribute('data-text-start')
@@ -277,7 +278,6 @@ define(function(require, exports, module) {
         '</div>' +
         '<div class="guide-right" id="guide-right">' +
         '</div>' +
-        '<div class="guide-text"></div>' +
         '<div class="guide-btn" id="guide-btn"></div>' +
         '</div>';
         var tag = getStore("HASCLICK");
@@ -314,6 +314,9 @@ define(function(require, exports, module) {
           $('#lucky-balls li').eq(0).click()
           $("#reference").hide()
         }
+        else if (ev.keyCode == '9'){
+          nextHandle()
+        }
       }, false)
 
       // 绑定点击抽奖事件
@@ -328,7 +331,25 @@ define(function(require, exports, module) {
 
       // 下一轮点击事件
       $('#next').on('click',function (){
-        switch (TYPE_STATUS){
+        var name=prompt("请输入奖项:")
+        $('#jiangxiang').text(name)
+        $('#lucky-balls-first').empty()
+        /*switch (TYPE_STATUS){
+          case 6:
+            TYPE_STATUS-=1;
+            TYPE='#lucky-balls-fifth';
+            alert("现在抽取五等奖")
+            break;
+          case 5:
+            TYPE_STATUS-=1;
+            TYPE='#lucky-balls-fourth';
+            alert("现在抽取四等奖")
+            break;
+          case 4:
+            TYPE_STATUS-=1;
+            TYPE='#lucky-balls-third';
+            alert("现在抽取三等奖")
+            break;
           case 3:
             TYPE_STATUS-=1;
             TYPE='#lucky-balls-second';
@@ -341,8 +362,43 @@ define(function(require, exports, module) {
             break;
           case 1:
             alert("已经是最后一轮")
-        }
+        }*/
+/*        nextHandle()*/
       })
+
+      function nextHandle(){
+        /*jiangxiang.innerText("")*/
+        /*switch (TYPE_STATUS){
+          case 6:
+            TYPE_STATUS-=1;
+            TYPE='#lucky-balls-fifth';
+            alert("现在抽取五等奖")
+            break;
+          case 5:
+            TYPE_STATUS-=1;
+            TYPE='#lucky-balls-fourth';
+            alert("现在抽取四等奖")
+            break;
+          case 4:
+            TYPE_STATUS-=1;
+            TYPE='#lucky-balls-third';
+            alert("现在抽取三等奖")
+            break;
+          case 3:
+            TYPE_STATUS-=1;
+            TYPE='#lucky-balls-second';
+            alert("现在抽取二等奖")
+            break;
+          case 2:
+            TYPE_STATUS-=1;
+            TYPE='#lucky-balls-first';
+            alert("现在抽取一等奖")
+            break;
+          case 1:
+            alert("已经是最后一轮")
+        }*/
+
+      }
     },
 
     start: function() {
